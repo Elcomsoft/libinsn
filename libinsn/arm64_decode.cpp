@@ -73,8 +73,8 @@ __attribute__((always_inline)) static uint64_t ones(uint64_t n){
     return ret;
 }
 
-__attribute__((always_inline)) static uint64_t ROR(uint64_t x, int shift, int len){
-    return ((x >> shift) | (x << (len - shift))) & ones(len);
+__attribute__((always_inline)) static uint64_t ROR(uint64_t x, uint8_t shift, uint8_t len){
+    return ((x >> shift) | (x << ((len - shift) & 0x3f))) & ones(len);
 }
 
 static inline uint64_t ror(uint64_t elt, unsigned size)
